@@ -15,7 +15,7 @@ public class Partida {
     private int[] perguntasJahFeitas = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
     private int[] rodada  = {1,1};
     
-    public void avancarRodada(){
+    public boolean avancarRodada(){
         if(rodada[0] < 3 && rodada[1] < 4){
             if(rodada[1] < 4){
                 rodada[1]++;
@@ -24,9 +24,10 @@ public class Partida {
                 rodada[0]++;
                 rodada[1] = 1;
             }
+            return true;
         }
         else{
-            finalizarPartida();
+            return false; //fim da partida
         }
     }
     

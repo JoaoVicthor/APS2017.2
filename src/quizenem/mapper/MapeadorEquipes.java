@@ -82,7 +82,7 @@ public class MapeadorEquipes implements Serializable{
         }
     }
     
-    public HashMap<String, Equipe> getEquipe(){
+    public HashMap<String, Equipe> getEquipes(){
         return equipes;
     }
     
@@ -90,6 +90,10 @@ public class MapeadorEquipes implements Serializable{
         this.equipes = equipes;
         System.err.println("equipes salvas.");
         persist();
+    }
+
+    public boolean verificaLogin(String login) {
+        return equipes.containsKey(login);
     }
     
 }
