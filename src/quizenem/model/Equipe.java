@@ -16,7 +16,7 @@ import quizenem.model.Respostas.RespostasErradas;
  */
 public class Equipe implements Serializable{
     private int alunosCadastrados = 0;
-    private String[] alunos = new String[5];
+    private String[] alunos = new String[6];
     private String nomeDaEquipe;
     private String login;
     private String senha;
@@ -24,26 +24,20 @@ public class Equipe implements Serializable{
     private RespostasErradas erros;
     
     public void defineLogin(String login){
-        if(!login.isEmpty()){
             this.login = login;
-        }
     }
     
     public void defineSenha(String senha){
-        if(!senha.isEmpty()){
             this.senha = senha;
-        }
     }
     
     public void defineNomeDaEquipe(String nomeDaEquipe){
-        if(!nomeDaEquipe.isEmpty()){
             this.nomeDaEquipe = nomeDaEquipe;
-        }
     }
     
     public void addAluno(String nome){
-        if(!nome.isEmpty() && alunosCadastrados < 5){
-            for(int i = 0; i < 5 ; i++){
+        if(alunosCadastrados < 6){
+            for(int i = 0; i < 6 ; i++){
                 if(alunos[i] == null){
                     alunos[i] = nome;
                     alunosCadastrados++;
@@ -53,7 +47,7 @@ public class Equipe implements Serializable{
     }
     
     public void removeAluno(String nome){
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 6; i++){
             if (alunos[i].equals(nome)){
                 alunos[i] = null;
                 alunosCadastrados--;

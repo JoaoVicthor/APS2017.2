@@ -26,14 +26,9 @@ public class MapeadorEquipes implements Serializable{
         load();
     }
 
-    public void put(Equipe equipe) {
-        if(!equipes.containsKey((String)equipe.getLogin())){
-            equipes.put(equipe.getLogin(), equipe);
-            persist();
-        }
-        else{
-            System.out.println("LOGIN USADO");
-        }
+        public void put(Equipe equipe) {
+                equipes.put(equipe.getLogin(), equipe);
+                persist();
     }
     
     public void remove(Equipe equipe) {
@@ -92,8 +87,13 @@ public class MapeadorEquipes implements Serializable{
         persist();
     }
 
-    public boolean verificaLogin(String login) {
-        return equipes.containsKey(login);
+    public boolean verificaLogin(String login) throws Exception {
+        if(equipes.containsKey(login)){
+            return equipes.containsKey(login);
+        }
+        else{
+            throw new Exception("LOGIN JÁ UTILIZADO");
+        }
     }
     
 }

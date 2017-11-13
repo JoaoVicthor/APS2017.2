@@ -6,7 +6,6 @@
 package quizenem.model;
 
 import java.io.Serializable;
-import quizenem.enumeration.Dificuldade;
 import quizenem.enumeration.TipoDePergunta;
 
 /**
@@ -14,24 +13,14 @@ import quizenem.enumeration.TipoDePergunta;
  * @author joaov
  */
 public class Pergunta implements Serializable {
-    private final int ID;
-    private final Dificuldade dificuldade;
+    private final String texto;
     private final Resposta[] respostas;
     private final TipoDePergunta tipoDePergunta;
 
-    public Pergunta(int ID, Dificuldade dificuldade, Resposta[] respostas, TipoDePergunta tipoDePergunta) {
-        this.ID = ID;
-        this.dificuldade = dificuldade;
+    public Pergunta(String texto, Resposta[] respostas, TipoDePergunta tipoDePergunta) {
+        this.texto = texto;
         this.respostas = respostas;
         this.tipoDePergunta = tipoDePergunta;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public Dificuldade getDificuldade() {
-        return dificuldade;
     }
 
     public Resposta[] getRespostas() {

@@ -29,4 +29,22 @@ public abstract class RespostasDaEquipe implements Serializable {
     public void addMatematica(){
         matematica++;
     }
+
+    public int getHumanas() {
+        return humanas;
+    }
+
+    public int getLinguagens() {
+        return linguagens;
+    }
+
+    public int getNatureza() {
+        return natureza;
+    }
+
+    public int getMatematica() {
+        return matematica;
+    }
+    
+    
 }

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import quizenem.model.Pergunta;
 
@@ -20,7 +21,7 @@ import quizenem.model.Pergunta;
  * @author joaov
  */
 public class MapeadorPerguntas implements Serializable{
-    private HashMap<Integer, Pergunta> perguntas = new HashMap();
+    private ArrayList<Pergunta> perguntas = new ArrayList<>();
     private final String fileName = "perguntas.dat";
 
     public MapeadorPerguntas() {
@@ -28,17 +29,13 @@ public class MapeadorPerguntas implements Serializable{
     }
 
     public void put(Pergunta pergunta) {
-        if(!perguntas.containsKey((Integer)pergunta.getID())){
-            perguntas.put(pergunta.getID(), pergunta);
+            perguntas.add(pergunta);
             persist();
-        }
-        else{
-            System.out.println("ID USADO");
-        }
+
     }
     
     public void remove(Pergunta pergunta) {
-            perguntas.remove(pergunta.getID());
+            perguntas.remove(pergunta);
             persist();
     }
 
@@ -61,7 +58,7 @@ public class MapeadorPerguntas implements Serializable{
         try {
             FileInputStream fileIn = new FileInputStream(fileName);
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            perguntas = (HashMap<Integer, Pergunta>) in.readObject();
+            perguntas = (ArrayList<Pergunta>) in.readObject();
             in.close();
             fileIn.close();
             in = null;
@@ -76,18 +73,14 @@ public class MapeadorPerguntas implements Serializable{
     }
 
     public Pergunta getPergunta(int ID) {
-        if (perguntas.containsKey(ID)) {
-            return perguntas.get(ID);
-        } else {
-            return null;
-        }
+        return perguntas.get(ID);
     }
     
-    public HashMap<Integer, Pergunta> getPerguntas(){
+    public ArrayList<Pergunta> getPerguntas(){
         return perguntas;
     }
     
-    public void setPerguntas(HashMap perguntas){
+    public void setPerguntas(ArrayList<Pergunta> perguntas){
         this.perguntas = perguntas;
         System.err.println("Perguntas salvas.");
         persist();
