@@ -16,6 +16,8 @@ import quizenem.model.Respostas.RespostasErradas;
  */
 public class Equipe implements Serializable{
     private int alunosCadastrados = 0;
+    private int partidas = 0;
+    private int desistencias = 0;
     private String[] alunos = new String[6];
     private String nomeDaEquipe;
     private String login;
@@ -59,7 +61,7 @@ public class Equipe implements Serializable{
         return alunos[i];
     }
     
-    public void registraAcerto(TipoDePergunta tipo){
+    public void addAcerto(TipoDePergunta tipo){
         switch (tipo) {
             case MAT:
                 acertos.addMatematica();
@@ -76,7 +78,7 @@ public class Equipe implements Serializable{
         }
     }
     
-    public void registraErro(TipoDePergunta tipo){
+    public void addErro(TipoDePergunta tipo){
         switch (tipo) {
             case MAT:
                 erros.addMatematica();
@@ -113,13 +115,49 @@ public class Equipe implements Serializable{
         return senha;
     }
 
-    public RespostasCorretas getAcertos() {
-        return acertos;
+    public int getAcertos(TipoDePergunta tipo) {
+        switch (tipo) {
+            case MAT:
+                return acertos.getMatematica();
+            case CH:
+                return acertos.getHumanas();
+            case CN:
+                return acertos.getNatureza();
+            default:
+                 return acertos.getLinguagens();
+        }
     }
 
-    public RespostasErradas getErros() {
-        return erros;
+    public int getErros(TipoDePergunta tipo) {
+        switch (tipo) {
+            case MAT:
+                return erros.getMatematica();
+            case CH:
+                return erros.getHumanas();
+            case CN:
+                return erros.getNatureza();
+            default:
+                 return erros.getLinguagens();
+        }
     }
+    
+    public void addPartida(){
+        partidas ++;
+    }
+    
+    public void addDesistencia(){
+        desistencias ++;
+    }
+
+    public int getPartidas() {
+        return partidas;
+    }
+
+    public int getDesistencias() {
+        return desistencias;
+    }
+    
+    
     
     
     

@@ -23,6 +23,10 @@ public class Pergunta implements Serializable {
         this.tipoDePergunta = tipoDePergunta;
     }
 
+    public String getTexto() {
+        return texto;
+    }
+
     public Resposta[] getRespostas() {
         return respostas;
     }

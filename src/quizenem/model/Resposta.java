@@ -19,4 +19,14 @@ public class Resposta implements Serializable{
         this.ehCorreta = ehCorreta;
         this.texto = texto;
     }
+
+    public boolean ehCorreta() {
+        return ehCorreta;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+    
+    
 }
