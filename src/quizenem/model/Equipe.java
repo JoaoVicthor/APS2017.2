@@ -37,7 +37,7 @@ public class Equipe implements Serializable{
             this.nomeDaEquipe = nomeDaEquipe;
     }
     
-    public void addAluno(String nome){
+    public void addAluno(String nome) throws Exception{
         if(alunosCadastrados < 6){
             for(int i = 0; i < 6 ; i++){
                 if(alunos[i] == null){
@@ -45,6 +45,9 @@ public class Equipe implements Serializable{
                     alunosCadastrados++;
                 }
             } 
+        }
+        else{
+            throw new Exception("NÚMERO MÁXIMO DE ALUNOS ALCANÇADO!");
         }
     }
     

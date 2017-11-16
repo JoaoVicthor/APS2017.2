@@ -5,15 +5,49 @@
  */
 package quizenem.model;
 
-import quizenem.controller.ControladorJogo;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import quizenem.enumeration.TipoDePergunta;
+import quizenem.mapper.MapeadorPerguntas;
 
 /**
  *
  * @author joaov
  */
 public class Partida {
-    private int[] perguntasJahFeitas = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
     private int[] rodada  = {1,1};
+    private Pergunta[] perguntas = new Pergunta[12];
+    private int respostas;
+    private int acertos;
+    private boolean perguntaIgnorada;
+    
+    public Partida(){
+        MapeadorPerguntas map = new MapeadorPerguntas();
+        
+        List<Pergunta> perguntas = map.getPerguntas(TipoDePergunta.CN);
+        Collections.shuffle(perguntas);
+        for(int i = 0; i < 3; i++){
+            this.perguntas[i] = perguntas.get(i);
+        }
+        
+        perguntas = map.getPerguntas(TipoDePergunta.CH);
+        Collections.shuffle(perguntas);
+        for(int i = 3; i < 6; i++){
+            this.perguntas[i] = perguntas.get(i);
+        }
+        
+        perguntas = map.getPerguntas(TipoDePergunta.MAT);
+        Collections.shuffle(perguntas);
+        for(int i = 6; i < 9; i++){
+            this.perguntas[i] = perguntas.get(i);
+        }
+        
+        Random random = new Random();
+        this.perguntas[9] = map.getPerguntaRandom(TipoDePergunta.LIN);
+        this.perguntas[10] = map.getPerguntaRandom(TipoDePergunta.ING);
+        this.perguntas[11] = map.getPerguntaRandom(TipoDePergunta.ESP);
+    }
     
     public boolean avancarRodada(){
         if(rodada[0] < 3 && rodada[1] < 4){
@@ -31,17 +65,37 @@ public class Partida {
         }
     }
     
-    public void adicionarPerguntaFeita(int i){
-        perguntasJahFeitas[(rodada[0]-1)*4 +  rodada[1]] = i;
+    public Pergunta getPergunta(){
+        return perguntas[(rodada[0]-1)*4 + rodada[1]];
     }
     
-    public boolean checarPergunta(int i){
-        for(int l = 0; l++ <= 11;){
-            if(i == perguntasJahFeitas[l]){
-                return true;
-            }
+    public boolean checkResposta(String resposta){
+        if(getPergunta().getRespostaCorreta().getTexto().equals(resposta)){
+            acertos++;
+            respostas++;
+            return true;
         }
-        return false;
+        else{
+            respostas++;
+            return false;
+        }
+    }
+    
+    public void ignorarPergunta() throws Exception{
+        if(!perguntaIgnorada){
+            perguntaIgnorada = true;
+        }
+        else{
+            throw new Exception("VOCÊ JÁ IGNOROU UMA PERGUNTA NESSA PARTIDA!");
+        }
+    }
+
+    public int getRespostas() {
+        return respostas;
+    }
+
+    public int getAcertos() {
+        return acertos;
     }
     
 }

@@ -17,8 +17,8 @@ import quizenem.view.Moldura;
  */
 public class ControladorPrincipal {
     private static ControladorPrincipal INSTANCE = null;
-    private ControladorJogo controladorJogo;
-    private ControladorAdm controladorAdm;
+    private ControladorEquipe controladorEquipe;
+    private ControladorDiretor controladorDiretor;
     private Moldura moldura = new Moldura();
     
     public static synchronized ControladorPrincipal getInstance(){
@@ -30,13 +30,13 @@ public class ControladorPrincipal {
     
     public void login(String login, String senha) throws LoginException{
         if(login.equals(Diretor.getLogin()) && senha.equals(Diretor.getSenha())){
-            controladorAdm = new ControladorAdm();
+            controladorDiretor = new ControladorDiretor();
             moldura.getTelaDiretor();
         }
         MapeadorEquipes map = new MapeadorEquipes();
         Equipe equipe = map.getEquipe(login);
         if(equipe != null && equipe.getSenha().equals(senha)){
-            controladorJogo = new ControladorJogo();
+            controladorEquipe = new ControladorEquipe(equipe);
             moldura.getTelaEquipe();
         }
         else{
@@ -45,8 +45,8 @@ public class ControladorPrincipal {
     }
     
     public void logout(){
-        controladorAdm = null;
-        controladorJogo = null;
         moldura.getTelaLogin();
+        controladorDiretor = null;
+        controladorEquipe = null;
     }
 }

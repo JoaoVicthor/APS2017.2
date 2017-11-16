@@ -12,53 +12,54 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+import quizenem.enumeration.TipoDePergunta;
 import quizenem.model.Pergunta;
+import quizenem.util.Multimap;
 
 /**
  *
  * @author joaov
  */
-public class MapeadorPerguntas implements Serializable{
-    private ArrayList<Pergunta> perguntas = new ArrayList<>();
+public class MapeadorPerguntas implements Serializable {
     private final String fileName = "perguntas.dat";
+    private Multimap<TipoDePergunta, Pergunta> perguntas = new Multimap();
 
     public MapeadorPerguntas() {
         load();
     }
 
-    public void put(Pergunta pergunta) {
-            perguntas.add(pergunta);
-            persist();
+    public void put(Pergunta pergunta, TipoDePergunta tipo) {
+        perguntas.putOne(tipo, pergunta);
+        persist();
 
     }
-    
-    public void remove(Pergunta pergunta) {
-            perguntas.remove(pergunta);
-            persist();
+
+    public void remove(Pergunta pergunta, TipoDePergunta tipo) {
+        perguntas.remove(tipo, pergunta);
+        persist();
     }
 
     public void persist() {
         try {
-            FileOutputStream fileOut = new FileOutputStream(fileName);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(perguntas);
-            fileOut.flush();
-            out.flush();
-            fileOut.close();
-            out.close();
+        FileOutputStream fileOut = new FileOutputStream(fileName);
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(perguntas);
+        fileOut.flush();
+        out.flush();
+        fileOut.close();
+        out.close();
             System.out.printf("Serialized data is saved in " + fileName);
         } catch (IOException i) {
             System.err.print("Something went wrong with the saving I/O");
         }
     }
-
     private void load() {
         try {
             FileInputStream fileIn = new FileInputStream(fileName);
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            perguntas = (ArrayList<Pergunta>) in.readObject();
+            perguntas = (Multimap<TipoDePergunta, Pergunta>) in.readObject();
             in.close();
             fileIn.close();
             in = null;
@@ -72,18 +73,14 @@ public class MapeadorPerguntas implements Serializable{
         }
     }
 
-    public Pergunta getPergunta(int ID) {
-        return perguntas.get(ID);
+    public List<Pergunta> getPerguntas(TipoDePergunta tipo) {
+        return perguntas.get(tipo);
     }
     
-    public ArrayList<Pergunta> getPerguntas(){
-        return perguntas;
+    public Pergunta getPerguntaRandom(TipoDePergunta tipo){
+        Random random = new Random();
+        List<Pergunta> list = getPerguntas(tipo);
+        return list.get(random.nextInt(list.size()-1));
     }
-    
-    public void setPerguntas(ArrayList<Pergunta> perguntas){
-        this.perguntas = perguntas;
-        System.err.println("Perguntas salvas.");
-        persist();
-    }
-    
+
 }

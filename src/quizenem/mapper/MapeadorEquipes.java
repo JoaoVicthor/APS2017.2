@@ -14,11 +14,13 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import quizenem.model.Equipe;
+
 /**
  *
  * @author joaov
  */
-public class MapeadorEquipes implements Serializable{
+public class MapeadorEquipes implements Serializable {
+
     private HashMap<String, Equipe> equipes = new HashMap();
     private final String fileName = "equipes.dat";
 
@@ -26,14 +28,14 @@ public class MapeadorEquipes implements Serializable{
         load();
     }
 
-        public void put(Equipe equipe) {
-                equipes.put(equipe.getLogin(), equipe);
-                persist();
+    public void put(Equipe equipe) {
+        equipes.put(equipe.getLogin(), equipe);
+        persist();
     }
-    
+
     public void remove(Equipe equipe) {
-            equipes.remove(equipe.getLogin());
-            persist();
+        equipes.remove(equipe.getLogin());
+        persist();
     }
 
     public void persist() {
@@ -76,24 +78,23 @@ public class MapeadorEquipes implements Serializable{
             return null;
         }
     }
-    
-    public HashMap<String, Equipe> getEquipes(){
+
+    public HashMap<String, Equipe> getEquipes() {
         return equipes;
     }
-    
-    public void setEquipes(HashMap equipes){
+
+    public void setEquipes(HashMap equipes) {
         this.equipes = equipes;
         System.err.println("equipes salvas.");
         persist();
     }
 
     public boolean verificaLogin(String login) throws Exception {
-        if(equipes.containsKey(login)){
+        if (equipes.containsKey(login)) {
             return equipes.containsKey(login);
-        }
-        else{
+        } else {
             throw new Exception("LOGIN JÁ UTILIZADO");
         }
     }
-    
+
 }

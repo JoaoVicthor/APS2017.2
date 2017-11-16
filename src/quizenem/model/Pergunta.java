@@ -13,6 +13,7 @@ import quizenem.enumeration.TipoDePergunta;
  * @author joaov
  */
 public class Pergunta implements Serializable {
+
     private final String texto;
     private final Resposta[] respostas;
     private final TipoDePergunta tipoDePergunta;
@@ -29,6 +30,15 @@ public class Pergunta implements Serializable {
 
     public Resposta[] getRespostas() {
         return respostas;
+    }
+
+    public Resposta getRespostaCorreta() {
+        for (Resposta r : respostas) {
+            if (r.ehCorreta()) {
+                return r;
+            }
+        }
+        return null;
     }
 
     public TipoDePergunta getTipoDePergunta() {

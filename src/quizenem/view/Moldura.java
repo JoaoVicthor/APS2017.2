@@ -19,7 +19,7 @@ public class Moldura extends javax.swing.JFrame {
     public Moldura() {
         super();
         initComponents();
-        getLoginPanel();
+        getTelaLogin();
         setMinimumSize(new Dimension(600, 600));
         setVisible(true);
     }
@@ -44,7 +44,7 @@ public class Moldura extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-    public void getLoginPanel(){
+    public void getTelaLogin(){
         LoginPanel loginPanel = new LoginPanel();
         add(loginPanel);
         loginPanel.setVisible(true);

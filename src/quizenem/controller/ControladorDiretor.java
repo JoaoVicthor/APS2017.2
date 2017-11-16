@@ -18,10 +18,9 @@ import quizenem.model.Resposta;
  *
  * @author joaov
  */
-public class ControladorAdm {
+public class ControladorDiretor {
 
     Equipe equipe;
-    TelaDiretor tela;
 
     public void cadastrarEquipe(String nome, String login, String senha, String confirmacao) throws Exception {
         MapeadorEquipes mapEquipes = new MapeadorEquipes();
@@ -57,7 +56,7 @@ public class ControladorAdm {
 
             Resposta[] respostas = {resposta1, resposta2, resposta3, resposta4, resposta5};
             Pergunta pergunta = new Pergunta(texto, respostas, tipo);
-            map.put(pergunta);
+            map.put(pergunta, tipo);
 
             System.out.println("PERGUNTA CADASTRADA COM SUCESSO.");
 
