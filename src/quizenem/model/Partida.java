@@ -5,6 +5,7 @@
  */
 package quizenem.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -18,6 +19,7 @@ import quizenem.mapper.MapeadorPerguntas;
 public class Partida {
     private int[] rodada  = {1,1};
     private Pergunta[] perguntas = new Pergunta[12];
+    private List<String> alunos = new ArrayList<>();
     private int respostas;
     private int acertos;
     private boolean perguntaIgnorada;
@@ -66,7 +68,7 @@ public class Partida {
     }
     
     public Pergunta getPergunta(){
-        return perguntas[(rodada[0]-1)*4 + rodada[1]];
+        return perguntas[(rodada[0]-1)* 3 + rodada[1]];
     }
     
     public boolean checkResposta(String resposta){
@@ -98,4 +100,12 @@ public class Partida {
         return acertos;
     }
     
+    public void setAlunos(List alunos){
+        Collections.shuffle(alunos);
+        this.alunos = alunos;
+    }
+    
+    public String getAluno(){
+        return alunos.get(((rodada[0]-1)* 3 + rodada[1]) % 6);
+    }
 }

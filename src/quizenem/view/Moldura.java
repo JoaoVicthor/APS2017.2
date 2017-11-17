@@ -20,7 +20,8 @@ public class Moldura extends javax.swing.JFrame {
         super();
         initComponents();
         getTelaLogin();
-        setMinimumSize(new Dimension(600, 600));
+        setMinimumSize(new Dimension(900, 700));
+        setResizable(false);
         setVisible(true);
     }
 
@@ -45,9 +46,33 @@ public class Moldura extends javax.swing.JFrame {
      */
     
     public void getTelaLogin(){
-        LoginPanel loginPanel = new LoginPanel();
+        LoginPanel loginPanel = new LoginPanel(this);
         add(loginPanel);
         loginPanel.setVisible(true);
+        revalidate();
+        repaint();
+    }
+    
+    public void getTelaDiretor(){
+        TelaDiretor telaDiretor = new TelaDiretor(this);
+        add(telaDiretor);
+        telaDiretor.setVisible(true);
+        revalidate();
+        repaint();
+    }
+    
+    public void getTelaCadastroEquipe(){
+        TelaCadastroEquipe telaCadastroEquipe = new TelaCadastroEquipe(this);
+        add(telaCadastroEquipe);
+        telaCadastroEquipe.setVisible(true);
+        revalidate();
+        repaint();
+    }
+    
+    public void getTelaCadastroPergunta(){
+        TelaCadastroPergunta telaCadastroPergunta = new TelaCadastroPergunta(this);
+        add(telaCadastroPergunta);
+        telaCadastroPergunta.setVisible(true);
         revalidate();
         repaint();
     }

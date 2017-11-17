@@ -10,5 +10,20 @@ package quizenem.enumeration;
  * @author joaov
  */
 public enum TipoDePergunta {
-    MAT, CN, CH, LIN, ING, ESP
+    MAT("Matemática"), CN("Ciências da Natureza"), CH("Ciências Humanas"), LIN("Português"), ING("Inglês"), ESP("Espanhol");
+
+    private final String texto;
+
+    TipoDePergunta(String texto) {
+        this.texto = texto;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public static String[] getTextos() {
+        String[] textos = {MAT.getTexto(), CN.getTexto(), CH.getTexto(), LIN.getTexto(), ING.getTexto(), ESP.getTexto()};
+        return textos;
+    }
 }

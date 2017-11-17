@@ -89,12 +89,8 @@ public class MapeadorEquipes implements Serializable {
         persist();
     }
 
-    public boolean verificaLogin(String login) throws Exception {
-        if (equipes.containsKey(login)) {
-            return equipes.containsKey(login);
-        } else {
-            throw new Exception("LOGIN JÁ UTILIZADO");
-        }
+    public boolean verificaLogin(String login){
+        return equipes.containsKey(login);
     }
 
 }

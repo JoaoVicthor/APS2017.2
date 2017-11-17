@@ -6,7 +6,9 @@
 package quizenem.controller;
 
 import java.awt.List;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 import quizenem.enumeration.TipoDePergunta;
 import quizenem.mapper.MapeadorEquipes;
 import quizenem.mapper.MapeadorPerguntas;
@@ -36,13 +38,15 @@ public class ControladorDiretor {
                 } else {
                     throw new Exception("SENHA E CONFIRMAÇÃO NAO BATEM!");
                 }
+            } else {
+                throw new Exception("LOGIN JÁ UTILIZADO");
             }
         } else {
             throw new Exception("É NECESSÁRIO PREENCHER TODOS OS CAMPOS!");
         }
     }
 
-    public void cadastrarPergunta(TipoDePergunta tipo, String texto, String errada1,
+    public void cadastrarPergunta(String tipoTexto, String texto, String errada1,
             String errada2, String errada3, String errada4, String certa) throws Exception {
         if (!texto.isEmpty() && !errada1.isEmpty() && !errada2.isEmpty() && !errada3.isEmpty()
                 && !errada4.isEmpty() && !certa.isEmpty()) {
@@ -54,7 +58,15 @@ public class ControladorDiretor {
             Resposta resposta4 = new Resposta(false, errada4);
             Resposta resposta5 = new Resposta(true, certa);
 
+            TipoDePergunta tipo = TipoDePergunta.MAT;
+            for (TipoDePergunta area : TipoDePergunta.values()) {
+                if (area.getTexto().equals(tipoTexto)) {
+                    tipo = area;
+                }
+            }
             Resposta[] respostas = {resposta1, resposta2, resposta3, resposta4, resposta5};
+            respostas = shuffleRespostas(respostas);
+            
             Pergunta pergunta = new Pergunta(texto, respostas, tipo);
             map.put(pergunta, tipo);
 
@@ -82,18 +94,31 @@ public class ControladorDiretor {
         MapeadorEquipes map = new MapeadorEquipes();
         this.equipe = map.getEquipe(equipe);
     }
-    
-    public float getPercentual(TipoDePergunta tipo){
+
+    public float getPercentual(TipoDePergunta tipo) {
         return equipe.getAcertos(tipo) / (equipe.getAcertos(tipo) + equipe.getErros(tipo));
     }
-    
-    public int getPartidasJogadas(){
+
+    public int getPartidasJogadas() {
         return equipe.getPartidas();
     }
-    
-    public int getDesistencias(){
+
+    public int getDesistencias() {
         return equipe.getDesistencias();
     }
-    
-    
+
+    private Resposta[] shuffleRespostas(Resposta[] respostas) {
+        int index;
+        Resposta temp;
+        Random random = new Random();
+        for (int i = respostas.length - 1; i > 0; i--) {
+            index = random.nextInt(i + 1);
+            temp = respostas[index];
+            respostas[index] = respostas[i];
+            respostas[i] = temp;
+        }
+        return respostas;
+
+    }
+
 }

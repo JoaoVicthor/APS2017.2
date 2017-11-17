@@ -50,7 +50,7 @@ public class ControladorEquipe {
             resposta.equals(partida.getPergunta().getRespostaCorreta().getTexto());    
         }
         else{
-            partida.ignorarPergunta();
+            ignorarPergunta();
         }
         if(partida.avancarRodada()){
             refreshTela();
@@ -62,6 +62,18 @@ public class ControladorEquipe {
     
     public void desistir(){
         getTelaEstatisticas();
+    }
+    
+    public void ignorarPergunta() throws Exception{
+        avancarRodada(null);
+    }
+    
+    public String getAluno(){
+        return partida.getAluno();
+    }
+    
+    public String getTexto(){
+        return partida.getPergunta().getTexto();
     }
     
 }
