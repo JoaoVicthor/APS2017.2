@@ -76,6 +76,14 @@ public class Moldura extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+    
+    public void getTelaEstatisticasDiretor(){
+        TelaEstatisticasDiretor telaEstatisticasDiretor = new TelaEstatisticasDiretor(this);
+        add(telaEstatisticasDiretor);
+        telaEstatisticasDiretor.setVisible(true);
+        revalidate();
+        repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

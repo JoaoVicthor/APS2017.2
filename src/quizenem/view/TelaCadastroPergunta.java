@@ -159,7 +159,7 @@ public class TelaCadastroPergunta extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 30, 0);
         add(jButton1, gridBagConstraints);
 
-        jButton2.setText("Sair");
+        jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

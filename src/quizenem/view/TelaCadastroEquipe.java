@@ -118,7 +118,7 @@ public class TelaCadastroEquipe extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 20, 15, 0);
         add(jButton1, gridBagConstraints);
 
-        jButton2.setText("Sair");
+        jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

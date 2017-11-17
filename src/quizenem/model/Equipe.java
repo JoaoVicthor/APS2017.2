@@ -22,8 +22,8 @@ public class Equipe implements Serializable{
     private String nomeDaEquipe;
     private String login;
     private String senha;
-    private RespostasCorretas acertos;
-    private RespostasErradas erros;
+    private RespostasCorretas acertos = new RespostasCorretas();
+    private RespostasErradas erros = new RespostasErradas();
     
     public void defineLogin(String login){
             this.login = login;

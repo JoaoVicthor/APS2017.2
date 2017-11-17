@@ -62,6 +62,11 @@ public class TelaDiretor extends javax.swing.JPanel {
         add(jButton2);
 
         jButton3.setText("Checar Estatísticas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         add(jButton3);
 
         jButton4.setText("Sair");
@@ -87,6 +92,11 @@ public class TelaDiretor extends javax.swing.JPanel {
         frame.remove(this);
         frame.getTelaCadastroPergunta();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        frame.remove(this);
+        frame.getTelaEstatisticasDiretor();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

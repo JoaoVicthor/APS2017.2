@@ -9,6 +9,7 @@ import java.awt.List;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Vector;
 import quizenem.enumeration.TipoDePergunta;
 import quizenem.mapper.MapeadorEquipes;
 import quizenem.mapper.MapeadorPerguntas;
@@ -77,13 +78,13 @@ public class ControladorDiretor {
         }
     }
 
-    public List getEquipes() {
+    public Vector getEquipes() {
         MapeadorEquipes map = new MapeadorEquipes();
-        List list = new List();
+        Vector vector = new Vector();
         for (String key : map.getEquipes().keySet()) {
-            list.add(key);
+            vector.add(key);
         }
-        return list;
+        return vector;
     }
 
     public Equipe getEquipe() {
@@ -96,14 +97,21 @@ public class ControladorDiretor {
     }
 
     public float getPercentual(TipoDePergunta tipo) {
-        return equipe.getAcertos(tipo) / (equipe.getAcertos(tipo) + equipe.getErros(tipo));
+        int total = equipe.getAcertos(tipo) + equipe.getErros(tipo);
+        if(total > 0){
+            return equipe.getAcertos(tipo) / total;
+        }
+        else{
+            return 0;
+        }
+        
     }
 
-    public int getPartidasJogadas() {
+    public Integer getPartidasJogadas() {
         return equipe.getPartidas();
     }
 
-    public int getDesistencias() {
+    public Integer getDesistencias() {
         return equipe.getDesistencias();
     }
 
