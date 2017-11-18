@@ -6,6 +6,7 @@
 package quizenem.view;
 
 import java.awt.Dimension;
+import javax.swing.JPanel;
 
 /**
  *
@@ -41,48 +42,47 @@ public class Moldura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    
+    public void addToMoldura(JPanel panel){
+        add(panel);
+        panel.setVisible(true);
+        revalidate();
+        repaint();
+    }
     
     public void getTelaLogin(){
         LoginPanel loginPanel = new LoginPanel(this);
-        add(loginPanel);
-        loginPanel.setVisible(true);
-        revalidate();
-        repaint();
+        addToMoldura(loginPanel);
+    }
+    
+    public void getTelaEquipe(){
+        TelaEquipe telaEquipe = new TelaEquipe(this);
+        addToMoldura(telaEquipe);
+    }
+    
+    public void getTelaAlunos() {
+        TelaAlunos telaAlunos = new TelaAlunos(this);
+        addToMoldura(telaAlunos);
     }
     
     public void getTelaDiretor(){
         TelaDiretor telaDiretor = new TelaDiretor(this);
-        add(telaDiretor);
-        telaDiretor.setVisible(true);
-        revalidate();
-        repaint();
+        addToMoldura(telaDiretor);
     }
     
     public void getTelaCadastroEquipe(){
         TelaCadastroEquipe telaCadastroEquipe = new TelaCadastroEquipe(this);
-        add(telaCadastroEquipe);
-        telaCadastroEquipe.setVisible(true);
-        revalidate();
-        repaint();
+        addToMoldura(telaCadastroEquipe);
     }
     
     public void getTelaCadastroPergunta(){
         TelaCadastroPergunta telaCadastroPergunta = new TelaCadastroPergunta(this);
-        add(telaCadastroPergunta);
-        telaCadastroPergunta.setVisible(true);
-        revalidate();
-        repaint();
+        addToMoldura(telaCadastroPergunta);
     }
     
     public void getTelaEstatisticasDiretor(){
         TelaEstatisticasDiretor telaEstatisticasDiretor = new TelaEstatisticasDiretor(this);
-        add(telaEstatisticasDiretor);
-        telaEstatisticasDiretor.setVisible(true);
-        revalidate();
-        repaint();
+        addToMoldura(telaEstatisticasDiretor);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

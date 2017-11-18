@@ -6,6 +6,7 @@
 package quizenem.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import quizenem.enumeration.TipoDePergunta;
 import quizenem.model.Respostas.RespostasCorretas;
 import quizenem.model.Respostas.RespostasErradas;
@@ -14,57 +15,51 @@ import quizenem.model.Respostas.RespostasErradas;
  *
  * @author joaov
  */
-public class Equipe implements Serializable{
-    private int alunosCadastrados = 0;
+public class Equipe implements Serializable {
+
     private int partidas = 0;
     private int desistencias = 0;
-    private String[] alunos = new String[6];
+    private ArrayList<String> alunos = new ArrayList();
     private String nomeDaEquipe;
     private String login;
     private String senha;
     private RespostasCorretas acertos = new RespostasCorretas();
     private RespostasErradas erros = new RespostasErradas();
-    
-    public void defineLogin(String login){
-            this.login = login;
+
+    public void defineLogin(String login) {
+        this.login = login;
     }
-    
-    public void defineSenha(String senha){
-            this.senha = senha;
+
+    public void defineSenha(String senha) {
+        this.senha = senha;
     }
-    
-    public void defineNomeDaEquipe(String nomeDaEquipe){
-            this.nomeDaEquipe = nomeDaEquipe;
+
+    public void defineNomeDaEquipe(String nomeDaEquipe) {
+        this.nomeDaEquipe = nomeDaEquipe;
     }
-    
-    public void addAluno(String nome) throws Exception{
-        if(alunosCadastrados < 6){
-            for(int i = 0; i < 6 ; i++){
-                if(alunos[i] == null){
-                    alunos[i] = nome;
-                    alunosCadastrados++;
-                }
-            } 
-        }
-        else{
+
+    public void addAluno(String nome) throws Exception {
+        if (alunos.size() < 6) {
+            alunos.add(nome);
+        } else {
             throw new Exception("NÚMERO MÁXIMO DE ALUNOS ALCANÇADO!");
         }
     }
-    
-    public void removeAluno(String nome){
-        for(int i = 0; i < 6; i++){
-            if (alunos[i].equals(nome)){
-                alunos[i] = null;
-                alunosCadastrados--;
+
+    public void removeAluno(String nome) {
+        for (String aluno : alunos) {
+            if (aluno == nome) {
+                alunos.remove(aluno);
+                break;
             }
         }
     }
-    
-    public String getAluno(int i){
-        return alunos[i];
+
+    public String getAluno(int i) {
+        return alunos.get(i);
     }
-    
-    public void addAcerto(TipoDePergunta tipo){
+
+    public void addAcerto(TipoDePergunta tipo) {
         switch (tipo) {
             case MAT:
                 acertos.addMatematica();
@@ -80,8 +75,8 @@ public class Equipe implements Serializable{
                 break;
         }
     }
-    
-    public void addErro(TipoDePergunta tipo){
+
+    public void addErro(TipoDePergunta tipo) {
         switch (tipo) {
             case MAT:
                 erros.addMatematica();
@@ -98,11 +93,7 @@ public class Equipe implements Serializable{
         }
     }
 
-    public int getAlunosCadastrados() {
-        return alunosCadastrados;
-    }
-
-    public String[] getAlunos() {
+    public ArrayList getAlunos() {
         return alunos;
     }
 
@@ -127,7 +118,7 @@ public class Equipe implements Serializable{
             case CN:
                 return acertos.getNatureza();
             default:
-                 return acertos.getLinguagens();
+                return acertos.getLinguagens();
         }
     }
 
@@ -140,16 +131,16 @@ public class Equipe implements Serializable{
             case CN:
                 return erros.getNatureza();
             default:
-                 return erros.getLinguagens();
+                return erros.getLinguagens();
         }
     }
-    
-    public void addPartida(){
-        partidas ++;
+
+    public void addPartida() {
+        partidas++;
     }
-    
-    public void addDesistencia(){
-        desistencias ++;
+
+    public void addDesistencia() {
+        desistencias++;
     }
 
     public int getPartidas() {
@@ -159,9 +150,5 @@ public class Equipe implements Serializable{
     public int getDesistencias() {
         return desistencias;
     }
-    
-    
-    
-    
-    
+
 }

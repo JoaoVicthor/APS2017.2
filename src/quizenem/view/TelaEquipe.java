@@ -11,13 +11,14 @@ import quizenem.controller.ControladorPrincipal;
  *
  * @author joaov
  */
-public class TelaDiretor extends javax.swing.JPanel {
+public class TelaEquipe extends javax.swing.JPanel {
+
     private final Moldura frame;
 
     /**
-     * Creates new form telaDiretor
+     * Creates new form TelaEquipe
      */
-    public TelaDiretor(Moldura frame) {
+    public TelaEquipe(Moldura frame) {
         initComponents();
         this.frame = frame;
     }
@@ -35,25 +36,18 @@ public class TelaDiretor extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        setLayout(new java.awt.GridLayout(5, 3, 0, 10));
+        setLayout(new java.awt.GridLayout(4, 1, 0, 10));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Diretor");
+        jLabel1.setText(ControladorPrincipal.getInstance().getControladorEquipe().getEquipe().getNomeDaEquipe());
         add(jLabel1);
 
-        jButton1.setText("Cadastrar Equipe");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.setText("Iniciar Partida");
         add(jButton1);
 
-        jButton2.setText("Adicionar Pergunta");
+        jButton2.setText("Gerenciar Alunos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -61,49 +55,30 @@ public class TelaDiretor extends javax.swing.JPanel {
         });
         add(jButton2);
 
-        jButton3.setText("Checar Estatísticas");
+        jButton3.setText("Sair");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         add(jButton3);
-
-        jButton4.setText("Sair");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        add(jButton4);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frame.remove(this);
-        frame.getTelaCadastroEquipe();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        frame.remove(this);
-        ControladorPrincipal.getInstance().logout();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        frame.remove(this);
-        frame.getTelaCadastroPergunta();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         frame.remove(this);
-        frame.getTelaEstatisticasDiretor();
+        ControladorPrincipal.getInstance().logout();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        frame.remove(this);
+        frame.getTelaAlunos();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
