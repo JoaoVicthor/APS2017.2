@@ -6,27 +6,29 @@
 package quizenem.model.Respostas;
 
 import java.io.Serializable;
+import quizenem.enumeration.TipoDePergunta;
 
 /**
  *
  * @author joaov
  */
 public abstract class RespostasDaEquipe implements Serializable {
+
     int humanas, linguagens, natureza, matematica = 0;
-    
-    public void addHumanas(){
+
+    public void addHumanas() {
         humanas++;
     }
-    
-    public void addLinguagens(){
+
+    public void addLinguagens() {
         linguagens++;
     }
-    
-    public void addNatureza(){
+
+    public void addNatureza() {
         natureza++;
     }
-    
-    public void addMatematica(){
+
+    public void addMatematica() {
         matematica++;
     }
 
@@ -45,6 +47,18 @@ public abstract class RespostasDaEquipe implements Serializable {
     public int getMatematica() {
         return matematica;
     }
-    
-    
+
+    public int get(TipoDePergunta tipo) {
+        switch (tipo) {
+            case MAT:
+                return getMatematica();
+            case CH:
+                return getHumanas();
+            case CN:
+                return getNatureza();
+            default:
+                return getLinguagens();
+        }
+    }
+
 }

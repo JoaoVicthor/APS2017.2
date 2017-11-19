@@ -59,40 +59,6 @@ public class Equipe implements Serializable {
         return alunos.get(i);
     }
 
-    public void addAcerto(TipoDePergunta tipo) {
-        switch (tipo) {
-            case MAT:
-                acertos.addMatematica();
-                break;
-            case CH:
-                acertos.addHumanas();
-                break;
-            case CN:
-                acertos.addNatureza();
-                break;
-            default:
-                acertos.addLinguagens();
-                break;
-        }
-    }
-
-    public void addErro(TipoDePergunta tipo) {
-        switch (tipo) {
-            case MAT:
-                erros.addMatematica();
-                break;
-            case CH:
-                erros.addHumanas();
-                break;
-            case CN:
-                erros.addNatureza();
-                break;
-            default:
-                erros.addLinguagens();
-                break;
-        }
-    }
-
     public ArrayList getAlunos() {
         return alunos;
     }
@@ -149,6 +115,18 @@ public class Equipe implements Serializable {
 
     public int getDesistencias() {
         return desistencias;
+    }
+
+    public void addAcertos(int acertos, TipoDePergunta tipo) {
+        for (int i = 0; i < acertos; i++) {
+            this.acertos.add(tipo);
+        }
+    }
+
+    public void addErros(int erros, TipoDePergunta tipo) {
+        for (int i = 0; i < erros; i++) {
+            this.erros.add(tipo);
+        }
     }
 
 }

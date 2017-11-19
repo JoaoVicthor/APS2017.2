@@ -201,6 +201,8 @@ public class TelaCadastroPergunta extends javax.swing.JPanel {
             String certa = jTextField5.getText();
             ControladorPrincipal.getInstance().getControladorDiretor().cadastrarPergunta(tipoTexto, texto, errada1, errada2, errada3, errada4, certa);
             JOptionPane.showMessageDialog(null, "PERGUNTA CADASTRADA COM SUCESSO.");
+            frame.remove(this);
+            frame.getTelaCadastroPergunta();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

@@ -96,13 +96,15 @@ public class ControladorDiretor {
         this.equipe = map.getEquipe(equipe);
     }
 
-    public float getPercentual(TipoDePergunta tipo) {
+    public String getPercentual(TipoDePergunta tipo) {
         int total = equipe.getAcertos(tipo) + equipe.getErros(tipo);
         if(total > 0){
-            return equipe.getAcertos(tipo) / total;
+            float porcentagem = (float) equipe.getAcertos(tipo) / total;
+            String str = String.format("%2.02f", porcentagem);
+            return str;
         }
         else{
-            return 0;
+            return "0";
         }
         
     }

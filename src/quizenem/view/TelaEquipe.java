@@ -5,6 +5,10 @@
  */
 package quizenem.view;
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import quizenem.controller.ControladorPrincipal;
 
 /**
@@ -37,6 +41,7 @@ public class TelaEquipe extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setLayout(new java.awt.GridLayout(4, 1, 0, 10));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
@@ -45,6 +50,11 @@ public class TelaEquipe extends javax.swing.JPanel {
         add(jLabel1);
 
         jButton1.setText("Iniciar Partida");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1);
 
         jButton2.setText("Gerenciar Alunos");
@@ -73,6 +83,17 @@ public class TelaEquipe extends javax.swing.JPanel {
         frame.remove(this);
         frame.getTelaAlunos();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ControladorPrincipal.getInstance().getControladorEquipe().iniciarPartida();
+            frame.remove(this);
+            frame.getTelaPartida();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
