@@ -171,7 +171,7 @@ public class TelaPartida extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(35, 10, 25, 0);
         add(jButton1, gridBagConstraints);
 
-        jButton2.setText("Desisitr da Partida");
+        jButton2.setText("Desistir da Partida");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
