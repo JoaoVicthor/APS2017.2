@@ -13,7 +13,9 @@ import quizenem.enumeration.TipoDePergunta;
  * @author joaov
  */
 public class TelaFinal extends javax.swing.JPanel {
+
     Moldura frame;
+
     /**
      * Creates new form TelaFinal
      */
@@ -156,7 +158,6 @@ public class TelaFinal extends javax.swing.JPanel {
         frame.remove(this);
         frame.getTelaEquipe();
     }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

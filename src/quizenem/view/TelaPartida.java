@@ -5,11 +5,8 @@
  */
 package quizenem.view;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import quizenem.controller.ControladorEquipe;
-import quizenem.enumeration.TipoDePergunta;
 
 /**
  *
@@ -30,7 +27,7 @@ public class TelaPartida extends javax.swing.JPanel {
         this.frame = frame;
         this.control = control;
         initComponents();
-                
+
     }
 
     /**
@@ -208,7 +205,7 @@ public class TelaPartida extends javax.swing.JPanel {
                 frame.remove(this);
                 frame.getTelaPartida();
             }
-        } catch (Exception ex) {            
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -238,11 +235,9 @@ public class TelaPartida extends javax.swing.JPanel {
                 throw new Exception("SELECIONE UMA DAS OPÇÕES!");
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

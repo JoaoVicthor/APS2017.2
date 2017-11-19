@@ -46,55 +46,54 @@ public class Moldura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void addToMoldura(JPanel panel){
+    public void addToMoldura(JPanel panel) {
         add(panel);
         panel.setVisible(true);
         revalidate();
         repaint();
     }
-    
-    public void getTelaLogin(){
+
+    public void getTelaLogin() {
         LoginPanel loginPanel = new LoginPanel(this);
         addToMoldura(loginPanel);
     }
-    
-    public void getTelaEquipe(){
+
+    public void getTelaEquipe() {
         TelaEquipe telaEquipe = new TelaEquipe(this);
         addToMoldura(telaEquipe);
     }
-    
-    public void getTelaPartida(){
+
+    public void getTelaPartida() {
         TelaPartida telaPartida = new TelaPartida(this, ControladorPrincipal.getInstance().getControladorEquipe());
         addToMoldura(telaPartida);
     }
-    
-    public void getTelaFinal(){
+
+    public void getTelaFinal() {
         TelaFinal telaFinal = new TelaFinal(this);
         addToMoldura(telaFinal);
     }
-    
+
     public void getTelaAlunos() {
         TelaAlunos telaAlunos = new TelaAlunos(this);
         addToMoldura(telaAlunos);
     }
-    
-    public void getTelaDiretor(){
+
+    public void getTelaDiretor() {
         TelaDiretor telaDiretor = new TelaDiretor(this);
         addToMoldura(telaDiretor);
     }
-    
-    public void getTelaCadastroEquipe(){
+
+    public void getTelaCadastroEquipe() {
         TelaCadastroEquipe telaCadastroEquipe = new TelaCadastroEquipe(this);
         addToMoldura(telaCadastroEquipe);
     }
-    
-    public void getTelaCadastroPergunta(){
+
+    public void getTelaCadastroPergunta() {
         TelaCadastroPergunta telaCadastroPergunta = new TelaCadastroPergunta(this);
         addToMoldura(telaCadastroPergunta);
     }
-    
-    public void getTelaEstatisticasDiretor(){
+
+    public void getTelaEstatisticasDiretor() {
         TelaEstatisticasDiretor telaEstatisticasDiretor = new TelaEstatisticasDiretor(this);
         addToMoldura(telaEstatisticasDiretor);
     }

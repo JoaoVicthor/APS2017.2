@@ -14,6 +14,7 @@ import quizenem.controller.ControladorPrincipal;
  * @author joaov
  */
 public class LoginPanel extends javax.swing.JPanel {
+
     Moldura frame;
 
     /**
@@ -108,11 +109,10 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            if(ControladorPrincipal.getInstance().login(jTextField2.getText(), jPasswordField1.getText())){
+            if (ControladorPrincipal.getInstance().login(jTextField2.getText(), jPasswordField1.getText())) {
                 frame.remove(this);
                 frame.getTelaDiretor();
-            }
-            else{
+            } else {
                 frame.remove(this);
                 frame.getTelaEquipe();
             }
@@ -120,7 +120,6 @@ public class LoginPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

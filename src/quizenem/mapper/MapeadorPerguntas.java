@@ -23,6 +23,7 @@ import quizenem.util.Multimap;
  * @author joaov
  */
 public class MapeadorPerguntas implements Serializable {
+
     private final String fileName = "perguntas.dat";
     private Multimap<TipoDePergunta, Pergunta> perguntas = new Multimap();
 
@@ -43,18 +44,19 @@ public class MapeadorPerguntas implements Serializable {
 
     public void persist() {
         try {
-        FileOutputStream fileOut = new FileOutputStream(fileName);
-        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-        out.writeObject(perguntas);
-        fileOut.flush();
-        out.flush();
-        fileOut.close();
-        out.close();
+            FileOutputStream fileOut = new FileOutputStream(fileName);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(perguntas);
+            fileOut.flush();
+            out.flush();
+            fileOut.close();
+            out.close();
             System.out.printf("Serialized data is saved in " + fileName);
         } catch (IOException i) {
             System.err.print("Something went wrong with the saving I/O");
         }
     }
+
     private void load() {
         try {
             FileInputStream fileIn = new FileInputStream(fileName);
@@ -76,11 +78,11 @@ public class MapeadorPerguntas implements Serializable {
     public List<Pergunta> getPerguntas(TipoDePergunta tipo) {
         return perguntas.get(tipo);
     }
-    
-    public Pergunta getPerguntaRandom(TipoDePergunta tipo){
+
+    public Pergunta getPerguntaRandom(TipoDePergunta tipo) {
         Random random = new Random();
         List<Pergunta> list = getPerguntas(tipo);
-        return list.get(random.nextInt(list.size()-1));
+        return list.get(random.nextInt(list.size() - 1));
     }
 
 }

@@ -89,7 +89,7 @@ public class MapeadorEquipes implements Serializable {
         persist();
     }
 
-    public boolean verificaLogin(String login){
+    public boolean verificaLogin(String login) {
         return equipes.containsKey(login);
     }
 

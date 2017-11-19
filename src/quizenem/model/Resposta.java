@@ -11,7 +11,8 @@ import java.io.Serializable;
  *
  * @author joaov
  */
-public class Resposta implements Serializable{
+public class Resposta implements Serializable {
+
     private final boolean ehCorreta;
     private final String texto;
 
@@ -27,6 +28,5 @@ public class Resposta implements Serializable{
     public String getTexto() {
         return texto;
     }
-    
-    
+
 }

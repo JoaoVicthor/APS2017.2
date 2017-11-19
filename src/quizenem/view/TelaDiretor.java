@@ -12,6 +12,7 @@ import quizenem.controller.ControladorPrincipal;
  * @author joaov
  */
 public class TelaDiretor extends javax.swing.JPanel {
+
     private final Moldura frame;
 
     /**
@@ -97,7 +98,6 @@ public class TelaDiretor extends javax.swing.JPanel {
         frame.remove(this);
         frame.getTelaEstatisticasDiretor();
     }//GEN-LAST:event_jButton3ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

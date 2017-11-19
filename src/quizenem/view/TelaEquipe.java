@@ -5,9 +5,6 @@
  */
 package quizenem.view;
 
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import quizenem.controller.ControladorPrincipal;
 
@@ -90,11 +87,9 @@ public class TelaEquipe extends javax.swing.JPanel {
             frame.remove(this);
             frame.getTelaPartida();
         } catch (Exception ex) {
-            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

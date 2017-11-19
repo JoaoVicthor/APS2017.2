@@ -10,6 +10,7 @@ package quizenem.model;
  * @author joaov
  */
 public abstract class Diretor {
+
     private static final String LOGIN = "diretor";
     private static final String SENHA = "99443322";
 

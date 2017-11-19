@@ -19,5 +19,5 @@ public class SistemaQuizEnem {
     public static void main(String[] args) {
         ControladorPrincipal.getInstance();
     }
-    
+
 }

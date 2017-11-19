@@ -15,6 +15,7 @@ import quizenem.controller.ControladorPrincipal;
  * @author joaov
  */
 public class TelaCadastroEquipe extends javax.swing.JPanel {
+
     Moldura frame;
 
     /**
@@ -159,9 +160,8 @@ public class TelaCadastroEquipe extends javax.swing.JPanel {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

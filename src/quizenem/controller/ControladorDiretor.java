@@ -5,9 +5,6 @@
  */
 package quizenem.controller;
 
-import java.awt.List;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Random;
 import java.util.Vector;
 import quizenem.enumeration.TipoDePergunta;
@@ -35,7 +32,6 @@ public class ControladorDiretor {
                     equipe.defineNomeDaEquipe(nome);
                     equipe.defineSenha(senha);
                     mapEquipes.put(equipe);
-                    System.out.println("EQUIPE CADASTRADA COM SUCESSO.");
                 } else {
                     throw new Exception("SENHA E CONFIRMAÇÃO NAO BATEM!");
                 }
@@ -67,11 +63,9 @@ public class ControladorDiretor {
             }
             Resposta[] respostas = {resposta1, resposta2, resposta3, resposta4, resposta5};
             respostas = shuffleRespostas(respostas);
-            
+
             Pergunta pergunta = new Pergunta(texto, respostas, tipo);
             map.put(pergunta, tipo);
-
-            System.out.println("PERGUNTA CADASTRADA COM SUCESSO.");
 
         } else {
             throw new Exception("É NECESSÁRIO PREENCHER TODOS OS CAMPOS!");
@@ -98,15 +92,14 @@ public class ControladorDiretor {
 
     public String getPercentual(TipoDePergunta tipo) {
         int total = equipe.getAcertos(tipo) + equipe.getErros(tipo);
-        if(total > 0){
+        if (total > 0) {
             float porcentagem = (float) equipe.getAcertos(tipo) / total;
             String str = String.format("%2.02f", porcentagem * 100);
             return str;
-        }
-        else{
+        } else {
             return "0";
         }
-        
+
     }
 
     public Integer getPartidasJogadas() {

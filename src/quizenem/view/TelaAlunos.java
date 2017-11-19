@@ -15,7 +15,9 @@ import quizenem.controller.ControladorPrincipal;
  * @author joaov
  */
 public class TelaAlunos extends javax.swing.JPanel {
+
     private final Moldura frame;
+
     /**
      * Creates new form TelaAlunos
      */
@@ -123,6 +125,7 @@ public class TelaAlunos extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 15);
         add(jButton2, gridBagConstraints);
+        jButton2.setEnabled(e);
 
         jButton3.setText("Voltar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +171,6 @@ public class TelaAlunos extends javax.swing.JPanel {
         frame.remove(this);
         frame.getTelaAlunos();
     }//GEN-LAST:event_jButton2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

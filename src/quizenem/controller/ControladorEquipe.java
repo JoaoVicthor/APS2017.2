@@ -65,25 +65,25 @@ public class ControladorEquipe {
         return partida.getPergunta().getRespostas()[i].getTexto();
     }
 
-    public boolean avancarRodada(String resposta ){
+    public boolean avancarRodada(String resposta) {
         partida.checkResposta(resposta, partida.getPergunta().getTipoDePergunta());
         return partida.avancarRodada();
     }
 
     public void finalizarPartida() {
-        for(TipoDePergunta tipo : TipoDePergunta.values()){
-            if(tipo == TipoDePergunta.ING || tipo == TipoDePergunta.ESP){
+        for (TipoDePergunta tipo : TipoDePergunta.values()) {
+            if (tipo == TipoDePergunta.ING || tipo == TipoDePergunta.ESP) {
                 break;
             }
             passaRespostas(tipo);
-        }                
+        }
         equipe.addPartida();
         MapeadorEquipes map = new MapeadorEquipes();
         map.put(equipe);
         partida = null;
     }
-    
-    public void passaRespostas(TipoDePergunta tipo){
+
+    public void passaRespostas(TipoDePergunta tipo) {
         equipe.addAcertos(partida.getAcertos(tipo), tipo);
         equipe.addErros(partida.getErros(tipo), tipo);
     }
@@ -112,10 +112,10 @@ public class ControladorEquipe {
     public Integer getRodada() {
         return partida.getRodada();
     }
-    
-    public Integer getAcertos(TipoDePergunta tipo){
-        if(tipo == TipoDePergunta.LIN){
-            return partida.getAcertos(tipo) + partida.getAcertos(TipoDePergunta.ESP) + partida.getAcertos(TipoDePergunta.ING) ;
+
+    public Integer getAcertos(TipoDePergunta tipo) {
+        if (tipo == TipoDePergunta.LIN) {
+            return partida.getAcertos(tipo) + partida.getAcertos(TipoDePergunta.ESP) + partida.getAcertos(TipoDePergunta.ING);
         }
         return partida.getAcertos(tipo);
     }

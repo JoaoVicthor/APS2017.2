@@ -14,7 +14,9 @@ import quizenem.enumeration.TipoDePergunta;
  * @author joaov
  */
 public class TelaEstatisticasDiretor extends javax.swing.JPanel {
+
     Moldura frame;
+
     /**
      * Creates new form TelaEstatisticasDiretor
      */
@@ -193,6 +195,7 @@ public class TelaEstatisticasDiretor extends javax.swing.JPanel {
         gridBagConstraints.gridy = 10;
         gridBagConstraints.insets = new java.awt.Insets(14, 0, 14, 0);
         add(jButton1, gridBagConstraints);
+        jButton1.setEnabled(e);
 
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -211,8 +214,6 @@ public class TelaEstatisticasDiretor extends javax.swing.JPanel {
         ControladorDiretor control = ControladorPrincipal.getInstance().getControladorDiretor();
         control.setEquipe((String) jComboBox1.getSelectedItem());
         jTextField1.setText(control.getPercentual(TipoDePergunta.CN) + "%");
-        System.out.println(control.getPercentual(TipoDePergunta.CN));
-        System.out.println(jTextField1.getText());
         jTextField2.setText(control.getPercentual(TipoDePergunta.CH) + "%");
         jTextField3.setText(control.getPercentual(TipoDePergunta.LIN) + "%");
         jTextField4.setText(control.getPercentual(TipoDePergunta.MAT) + "%");
@@ -224,7 +225,6 @@ public class TelaEstatisticasDiretor extends javax.swing.JPanel {
         frame.remove(this);
         frame.getTelaDiretor();
     }//GEN-LAST:event_jButton2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

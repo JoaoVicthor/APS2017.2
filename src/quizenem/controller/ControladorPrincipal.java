@@ -59,6 +59,5 @@ public class ControladorPrincipal {
     public ControladorDiretor getControladorDiretor() {
         return controladorDiretor;
     }
-    
-    
+
 }
