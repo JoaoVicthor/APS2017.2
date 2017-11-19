@@ -80,6 +80,8 @@ public class TelaEstatisticasDiretor extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 68);
         add(jComboBox1, gridBagConstraints);
+        boolean e = jComboBox1.getModel().getSize() >= 1;
+        jComboBox1.setEnabled(e);
 
         jLabel3.setText("Percentuais de acerto");
         gridBagConstraints = new java.awt.GridBagConstraints();

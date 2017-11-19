@@ -100,7 +100,7 @@ public class ControladorDiretor {
         int total = equipe.getAcertos(tipo) + equipe.getErros(tipo);
         if(total > 0){
             float porcentagem = (float) equipe.getAcertos(tipo) / total;
-            String str = String.format("%2.02f", porcentagem);
+            String str = String.format("%2.02f", porcentagem * 100);
             return str;
         }
         else{
