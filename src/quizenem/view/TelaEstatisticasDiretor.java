@@ -209,6 +209,8 @@ public class TelaEstatisticasDiretor extends javax.swing.JPanel {
         ControladorDiretor control = ControladorPrincipal.getInstance().getControladorDiretor();
         control.setEquipe((String) jComboBox1.getSelectedItem());
         jTextField1.setText(control.getPercentual(TipoDePergunta.CN) + "%");
+        System.out.println(control.getPercentual(TipoDePergunta.CN));
+        System.out.println(jTextField1.getText());
         jTextField2.setText(control.getPercentual(TipoDePergunta.CH) + "%");
         jTextField3.setText(control.getPercentual(TipoDePergunta.LIN) + "%");
         jTextField4.setText(control.getPercentual(TipoDePergunta.MAT) + "%");

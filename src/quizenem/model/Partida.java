@@ -11,20 +11,22 @@ import java.util.List;
 import java.util.Random;
 import quizenem.enumeration.TipoDePergunta;
 import quizenem.mapper.MapeadorPerguntas;
+import quizenem.model.Respostas.RespostasCorretas;
+import quizenem.model.Respostas.RespostasErradas;
 
 /**
  *
  * @author joaov
  */
 public class Partida {
-    private int[] rodada  = {1,1};
+    private int rodada  = 1;
     private Pergunta[] perguntas = new Pergunta[12];
     private List<String> alunos = new ArrayList<>();
-    private int respostas;
-    private int acertos;
+    private RespostasCorretas respostasCorretas = new RespostasCorretas();
+    private RespostasErradas respostasErradas = new RespostasErradas();
     private boolean perguntaIgnorada;
     
-    public Partida(){
+    public Partida(Equipe equipe){
         MapeadorPerguntas map = new MapeadorPerguntas();
         
         List<Pergunta> perguntas = map.getPerguntas(TipoDePergunta.CN);
@@ -36,30 +38,26 @@ public class Partida {
         perguntas = map.getPerguntas(TipoDePergunta.CH);
         Collections.shuffle(perguntas);
         for(int i = 3; i < 6; i++){
-            this.perguntas[i] = perguntas.get(i);
+            this.perguntas[i] = perguntas.get(i-3);
         }
         
         perguntas = map.getPerguntas(TipoDePergunta.MAT);
         Collections.shuffle(perguntas);
         for(int i = 6; i < 9; i++){
-            this.perguntas[i] = perguntas.get(i);
+            this.perguntas[i] = perguntas.get(i-6);
         }
         
         Random random = new Random();
         this.perguntas[9] = map.getPerguntaRandom(TipoDePergunta.LIN);
         this.perguntas[10] = map.getPerguntaRandom(TipoDePergunta.ING);
         this.perguntas[11] = map.getPerguntaRandom(TipoDePergunta.ESP);
+        this.alunos = equipe.getAlunos();
+        Collections.shuffle(alunos);
     }
     
     public boolean avancarRodada(){
-        if(rodada[0] < 3 && rodada[1] < 4){
-            if(rodada[1] < 4){
-                rodada[1]++;
-            }
-            else{
-                rodada[0]++;
-                rodada[1] = 1;
-            }
+        if(rodada < 12){
+            rodada++;
             return true;
         }
         else{
@@ -68,17 +66,16 @@ public class Partida {
     }
     
     public Pergunta getPergunta(){
-        return perguntas[(rodada[0]-1)* 3 + rodada[1]];
+        return perguntas[rodada-1];
     }
     
-    public boolean checkResposta(String resposta){
-        if(getPergunta().getRespostaCorreta().getTexto().equals(resposta)){
-            acertos++;
-            respostas++;
+    public boolean checkResposta(String resposta, TipoDePergunta tipo){
+        if(getPergunta().getRespostaCorreta().getTexto() == resposta){
+            respostasCorretas.add(tipo);
             return true;
         }
         else{
-            respostas++;
+            respostasErradas.add(tipo);
             return false;
         }
     }
@@ -92,12 +89,13 @@ public class Partida {
         }
     }
 
-    public int getRespostas() {
-        return respostas;
-    }
 
-    public int getAcertos() {
-        return acertos;
+    public Integer getAcertos(TipoDePergunta tipo) {
+        return respostasCorretas.get(tipo);
+    }
+    
+    public int getErros(TipoDePergunta tipo) {
+        return respostasErradas.get(tipo);
     }
     
     public void setAlunos(List alunos){
@@ -106,6 +104,10 @@ public class Partida {
     }
     
     public String getAluno(){
-        return alunos.get(((rodada[0]-1)* 3 + rodada[1]) % 6);
+        return alunos.get((rodada-1) % 6);
+    }
+    
+    public Integer getRodada(){
+        return rodada;
     }
 }

@@ -6,7 +6,10 @@
 package quizenem.view;
 
 import java.awt.Dimension;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import quizenem.controller.ControladorEquipe;
+import quizenem.controller.ControladorPrincipal;
 
 /**
  *
@@ -22,8 +25,9 @@ public class Moldura extends javax.swing.JFrame {
         initComponents();
         getTelaLogin();
         setMinimumSize(new Dimension(900, 700));
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
+        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -58,6 +62,16 @@ public class Moldura extends javax.swing.JFrame {
     public void getTelaEquipe(){
         TelaEquipe telaEquipe = new TelaEquipe(this);
         addToMoldura(telaEquipe);
+    }
+    
+    public void getTelaPartida(){
+        TelaPartida telaPartida = new TelaPartida(this, ControladorPrincipal.getInstance().getControladorEquipe());
+        addToMoldura(telaPartida);
+    }
+    
+    public void getTelaFinal(){
+        TelaFinal telaFinal = new TelaFinal(this);
+        addToMoldura(telaFinal);
     }
     
     public void getTelaAlunos() {

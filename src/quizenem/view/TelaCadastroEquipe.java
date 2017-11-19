@@ -154,6 +154,8 @@ public class TelaCadastroEquipe extends javax.swing.JPanel {
             String conf = jPasswordField2.getText();
             ControladorPrincipal.getInstance().getControladorDiretor().cadastrarEquipe(nome, login, senha, conf);
             JOptionPane.showMessageDialog(null, "CADASTRO DE EQUIPE EFETUADO COM SUCESSO.");
+            frame.remove(this);
+            frame.getTelaCadastroEquipe();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
