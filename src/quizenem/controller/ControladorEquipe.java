@@ -114,9 +114,6 @@ public class ControladorEquipe {
     }
 
     public Integer getAcertos(TipoDePergunta tipo) {
-        if (tipo == TipoDePergunta.LIN) {
-            return partida.getAcertos(tipo) + partida.getAcertos(TipoDePergunta.ESP) + partida.getAcertos(TipoDePergunta.ING);
-        }
         return partida.getAcertos(tipo);
     }
 
