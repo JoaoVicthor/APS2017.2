@@ -76,29 +76,11 @@ public class Equipe implements Serializable {
     }
 
     public int getAcertos(TipoDePergunta tipo) {
-        switch (tipo) {
-            case MAT:
-                return acertos.getMatematica();
-            case CH:
-                return acertos.getHumanas();
-            case CN:
-                return acertos.getNatureza();
-            default:
-                return acertos.getLinguagens();
-        }
+        return acertos.get(tipo);
     }
 
     public int getErros(TipoDePergunta tipo) {
-        switch (tipo) {
-            case MAT:
-                return erros.getMatematica();
-            case CH:
-                return erros.getHumanas();
-            case CN:
-                return erros.getNatureza();
-            default:
-                return erros.getLinguagens();
-        }
+        return erros.get(tipo);
     }
 
     public void addPartida() {

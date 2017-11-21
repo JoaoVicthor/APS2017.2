@@ -16,48 +16,33 @@ public abstract class RespostasDaEquipe implements Serializable {
 
     int humanas, linguagens, natureza, matematica = 0;
 
-    public void addHumanas() {
-        humanas++;
-    }
-
-    public void addLinguagens() {
-        linguagens++;
-    }
-
-    public void addNatureza() {
-        natureza++;
-    }
-
-    public void addMatematica() {
-        matematica++;
-    }
-
-    public int getHumanas() {
-        return humanas;
-    }
-
-    public int getLinguagens() {
-        return linguagens;
-    }
-
-    public int getNatureza() {
-        return natureza;
-    }
-
-    public int getMatematica() {
-        return matematica;
-    }
-
     public int get(TipoDePergunta tipo) {
         switch (tipo) {
             case MAT:
-                return getMatematica();
+                return matematica;
             case CH:
-                return getHumanas();
+                return humanas;
             case CN:
-                return getNatureza();
+                return natureza;
             default:
-                return getLinguagens();
+                return linguagens;
+        }
+    }
+    
+    public void add(TipoDePergunta tipo) {
+        switch (tipo) {
+            case MAT:
+                matematica++;
+                break;
+            case CH:
+                humanas++;
+                break;
+            case CN:
+                natureza++;
+                break;
+            default:
+                linguagens++;
+                break;
         }
     }
 

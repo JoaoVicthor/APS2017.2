@@ -33,11 +33,6 @@ public class MapeadorEquipes implements Serializable {
         persist();
     }
 
-    public void remove(Equipe equipe) {
-        equipes.remove(equipe.getLogin());
-        persist();
-    }
-
     public void persist() {
         try {
             FileOutputStream fileOut = new FileOutputStream(fileName);

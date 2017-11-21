@@ -37,11 +37,6 @@ public class MapeadorPerguntas implements Serializable {
 
     }
 
-    public void remove(Pergunta pergunta, TipoDePergunta tipo) {
-        perguntas.remove(tipo, pergunta);
-        persist();
-    }
-
     public void persist() {
         try {
             FileOutputStream fileOut = new FileOutputStream(fileName);
